@@ -1,0 +1,37 @@
+{
+  "name": "battleship",
+  "version": "1.0.0",
+  "description": "Battleship",
+  "engines": {
+    "node": ">=22.14.0"
+  },
+  "main": "./src/index.ts",
+  "type": "module",
+  "scripts": {
+    "start": "cross-env NODE_ENV=development nodemon ./src/index.ts"
+  },
+  "nodemonConfig": {
+    "watch": [
+      "src"
+    ],
+    "ext": "ts",
+    "ignore": [
+      "dist/**"
+    ],
+    "exec": "node --loader ts-node/esm --no-warnings=ExperimentalWarning"
+  },
+  "dependencies": {
+    "dotenv": "^16.5.0",
+    "nodemon": "^3.1.10",
+    "uuid": "^11.1.0",
+    "ws": "^8.18.2"
+  },
+
+  "devDependencies": {
+    "@types/node": "^22.15.17",
+    "@types/ws": "^8.18.1",
+    "cross-env": "^7.0.3",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.8.3"
+  }
+}
