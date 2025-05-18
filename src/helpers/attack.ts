@@ -22,6 +22,7 @@ export const attack = async (
 
     if (!game || game.playerTurn !== indexPlayer) return;
 
+    const player1 = await gameDb.getPlayerById(indexPlayer);
     const player2 = game.players.find((player) => player.id !== indexPlayer);
     const map = player2.map;
     const player2Data = await gameDb.getPlayerById(player2.id);
@@ -42,6 +43,7 @@ export const attack = async (
       const turnMessage = { currentPlayer: player2.id };
       sendResponse(webSocket, RequestType.turn, turnMessage);
       sendResponse(player2Data.webSocket, RequestType.turn, turnMessage);
+      console.log(`${body.type}: Player "${player1.name}" shot into attacked point. Subsequent player's turn`);
       return;
     }
 
@@ -95,6 +97,7 @@ export const attack = async (
 
     sendResponse(webSocket, RequestType.attack, message);
     sendResponse(player2Data.webSocket, RequestType.attack, message);
+    console.log(`${body.type}: Player "${player1.name}" attacked point x:${points.x}, y:${points.y}. Attack result: ${status}`);
 
     let healthyShip = false;
     for (let i = 0; i <= 9; i++) {
@@ -109,6 +112,7 @@ export const attack = async (
       const response = { winPlayer: indexPlayer };
       sendResponse(webSocket, RequestType.finish, response);
       sendResponse(player2Data.webSocket, RequestType.finish, response);
+      console.log(`${RequestType.finish}: Player "${player1.name}" wins! Player "${player2Data.name}" loser!`);
       await updateWinners(gameDb);
       return;
     }
