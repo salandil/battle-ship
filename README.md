@@ -30,7 +30,14 @@ cp env.example .env
 
 ## 🎮 Running the Game
 
-To start the development server:
+Player interface for your battleship backend is here: https://github.com/rolling-scopes-school/websockets-ui.
+You should clone or copy this repository.
+To start the ui interface:
+```bash
+npm run start
+```
+
+To start the backend server:
 
 ```bash
 npm run start
@@ -41,5 +48,8 @@ It's default port is 3000. Could be confinguired in .env file.
 
 ## Game Notes:
 
+- the backend server and ui are in different repositories, 
+  to run the ui part you need to clone or copy it from here: https://github.com/rolling-scopes-school/websockets-ui
+  and run it separately from the backend server.
 - Player is added to the room right automatically when create a room
 - When hit already shot ship or already missed point, the next player turn comes.
