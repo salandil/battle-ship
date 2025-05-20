@@ -32,9 +32,15 @@ cp env.example .env
 
 Player interface for your battleship backend is here: https://github.com/rolling-scopes-school/websockets-ui.
 You should clone or copy this repository.
-To start the ui interface:
-```bash
+```
+git clone git@github.com:rolling-scopes-school/websockets-ui.git
+cd websockets-ui
+
+npm install
+
 npm run start
+
+[Frontend will be available here](http://localhost:8181/)
 ```
 
 To start the backend server:
